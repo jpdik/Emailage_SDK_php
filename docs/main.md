@@ -33,28 +33,28 @@ All configuration variables are lower case and will be converted to lower case w
 
 1. account_sid
 
-...The Account SID that you get from your sandbox or live environment
+   The Account SID that you get from your sandbox or live environment
 
 2. auth_token
 
-...The Auth Token that you get from your sandbox or live environment
+   The Auth Token that you get from your sandbox or live environment
 
 3. format
 
-...The Format the Results are returned to you in.  Allowed values are 'json' or 'xml'.  If a value not matching that is provided, it will be ignored and defaulted back to json.
+   The Format the Results are returned to you in.  Allowed values are 'json' or 'xml'.  If a value not matching that is provided, it will be ignored and defaulted back to json.
 
 4. sandbox
 
-...Boolean (TRUE || FALSE) If it is TRUE, the SDK will send your calls to the Sandbox URL, if False will query the live system
+   Boolean (TRUE || FALSE) If it is TRUE, the SDK will send your calls to the Sandbox URL, if False will query the live system
 
 5. log_level
 
-...Takes a value of 1, 2 or 3.  
-...3 will only log Major messages to the PHP error log file. (Default Value)
-...2 will log Notices, like invalid format choices.
-...1 Verbose,  This will log everything the system does to the error log in an easy to read process.
+   Takes a value of 1, 2 or 3.  
+   3 will only log Major messages to the PHP error log file. (Default Value)
+   2 will log Notices, like invalid format choices.
+   1 Verbose,  This will log everything the system does to the error log in an easy to read process.
 
 6. throw_errors
 
-..Boolean (TRUE || FALSE) Will throw errors on Major Messages and on Errors returned from the Emailage API.  False will let your scripts deal with the responses.
+   Boolean (TRUE || FALSE) Will throw errors on Major Messages and on Errors returned from the Emailage API.  False will let your scripts deal with the responses.
 
