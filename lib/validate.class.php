@@ -3,19 +3,19 @@
 
 	class validate
 	{
-		static function email($email, $format = 'json')
+		static function email($email, $recordID = NULL, $format = NULL)
 		{
-			return self::executeRequest(['query' => $email, 'format' => 'json']);
+			return self::executeRequest(['query' => $email, 'urid' => $recordID, 'format' => $format]);
 		}
 		
-		static function IP($IP, $format = 'json')
+		static function IP($IP, $recordID = NULL, $format = NULL)
 		{
-			return self::executeRequest(['query' => $IP, 'format' => 'json']);
+			return self::executeRequest(['query' => $IP, 'urid' => $recordID, 'format' => $format]);
 		}
 		
-		static function emailAndIP($email, $IP, $format = 'json')
+		static function emailAndIP($email, $IP, $recordID = NULL, $format = NULL)
 		{
-			return self::executeRequest(['query' => $email . '+' . $IP, 'format' => 'json']);
+			return self::executeRequest(['query' => $email . '+' . $IP, 'urid' => $recordID, 'format' => $format]);
 		}
 		
 		private static function executeRequest($parameters)

@@ -7,5 +7,12 @@
 	
 	\Emailage\config::multiple($config);
 	
+	// Simple Call
 	$results = \Emailage\validate::email('jonathan.pitcher@gmail.com');
+	
+	// Supply A record ID from your system for the Email
+	$results = \Emailage\validate::email('jonathan.pitcher@gmail.com', 145277);
+	
+	// Change the response format just for this call
+	$results = \Emailage\validate::email('jonathan.pitcher@gmail.com', NULL, 'json');
 ?>

@@ -23,6 +23,13 @@
 		
 		static function get($name)
 		{
-			return $GLOBALS['emailage_' . $name];
+			if(isset($GLOBALS['emailage_' . $name]))
+			{
+				return $GLOBALS['emailage_' . $name];
+			}
+			else 
+			{
+				return false;
+			}
 		}
 	}
