@@ -50,28 +50,61 @@ Creating the Class
 	$Emailage->changeSetting('return_parsed_results', FALSE);
 ```
 
-###Validating By Email Address
+###Validating
+
+##### By Email Address
 
 ```php
 	$Emailage->validateEmail('example@example.com');
 ```
 
-###Validating By IP
+#####By IP
 
 ```php
 	$Emailage->validateIP('127.0.0.1');
 ```
 
-###Validating By Both Email and IP
+#####By Both Email and IP
 
 ```php
 	$Emailage->validateBoth('example@example.com', '127.0.0.1');
 ```
 
-###Adding a User Defined Record ID. This parameter can be used when you want to add an identifier for a query. The identifier will display in the result.
+###Adding a User Defined Record ID. 
+######This parameter can be used when you want to add an identifier for a query. The identifier will display in the result.
 
 ```php
 	$Emailage->validateEmail('example@example.com', 1234);
 	$Emailage->validateIP('127.0.0.1', 1235);
 	$Emailage->validateBoth('example@example.com', '127.0.0.1', 1236);
+```
+
+###Flagging an Email Address
+
+#####As Fraud
+
+```php
+	/**
+		The fraudcodeID is ONLY required when the flag is "fraud". Possible values are:
+		1 Card Not Present Fraud
+		2 Customer Dispute (Chargeback)
+		3 First Party Fraud
+		4 First Payment Default
+		5 Identify Theft (Fraud Application) 6 Identify Theft (Account Take Over) 7 Suspected Fraud (Not Confirmed) 8 Synthetic ID
+		9 Other
+	*/
+	$fraudID = 9;
+	$Emailage->flagFraud('example@example.com', $fraudID);
+```
+
+#####As Neutral
+
+```php
+	$Emailage->flagNeutral('example@example.com');
+```
+
+#####As Good
+
+```php
+	$Emailage->flagGood('example@example.com');
 ```
