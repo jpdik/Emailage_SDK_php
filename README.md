@@ -17,9 +17,9 @@ Creating the Class
 	$Emailage = new Emailage($account_sid, $authToken);
 ```
 
-Changing Settings.
+###Changing Settings.
 
-Option 1, on Class Creation
+#####Option 1, on Class Creation
 
 ```php
 	include 'Emailage.class.php';
@@ -35,7 +35,7 @@ Option 1, on Class Creation
 	$Emailage = new Emailage($account_sid, $authToken, $sandbox, $format, $signature_method, $validate_response, $return_parsed_result);
 ```
 
-Option 2, after Class Creation
+#####Option 2, after Class Creation
 
 ```php
 	include 'Emailage.class.php';
@@ -48,4 +48,30 @@ Option 2, after Class Creation
 	$Emailage->changeSetting('signature_method', 'sha256');
 	$Emailage->changeSetting('validate_response', FALSE);
 	$Emailage->changeSetting('return_parsed_results', FALSE);
+```
+
+###Validating By Email Address
+
+```php
+	$Emailage->validateEmail('example@example.com');
+```
+
+###Validating By IP
+
+```php
+	$Emailage->validateIP('127.0.0.1');
+```
+
+###Validating By Both Email and IP
+
+```php
+	$Emailage->validateBoth('example@example.com', '127.0.0.1');
+```
+
+###Adding a User Defined Record ID. This parameter can be used when you want to add an identifier for a query. The identifier will display in the result.
+
+```php
+	$Emailage->validateEmail('example@example.com', 1234);
+	$Emailage->validateIP('127.0.0.1', 1235);
+	$Emailage->validateBoth('example@example.com', '127.0.0.1', 1236);
 ```
