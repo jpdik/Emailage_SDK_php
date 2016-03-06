@@ -111,7 +111,7 @@ Creating the Class
 
 ###Errors
 
-This SDK will throw errors when any of the following issues occur, or make sure your scripts catch the exceptions.
+This SDK will throw errors when any of the following issues occur, make sure your scripts catch the exceptions.
 
 1. When you set a setting to an invalid format.
 2. When Curl has an issue, like not being able to connect from your server to Emailge API.
