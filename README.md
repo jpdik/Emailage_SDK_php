@@ -47,7 +47,7 @@ Creating the Class
 	$Emailage->changeSetting('format', 'json');
 	$Emailage->changeSetting('signature_method', 'sha256');
 	$Emailage->changeSetting('validate_response', FALSE);
-	$Emailage->changeSetting('return_parsed_results', FALSE);
+	$Emailage->changeSetting('return_parsed_result', FALSE);
 ```
 
 ###Validating
@@ -108,3 +108,13 @@ Creating the Class
 ```php
 	$Emailage->flagGood('example@example.com');
 ```
+
+###Errors
+
+This SDK will throw errors when any of the following issues occur, or make sure your scripts catch the exceptions.
+
+1. When you set a setting to an invalid format.
+2. When Curl has an issue, like not being able to connect from your server to Emailge API.
+3. When bad formated XML is received
+4. When bad formatted JSON is received
+5. If you have validate_response == TRUE, and an error is returned by Emailage, an error will be thrown
