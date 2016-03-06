@@ -13,7 +13,39 @@ Creating the Class
 	
 	$account_sid = 'My Account SID';
 	$authToken = 'My Auth Token';
-	$testEmail = 'example@example.com';
 	
 	$Emailage = new Emailage($account_sid, $authToken);
+```
+
+Changing Settings.
+
+Option 1, on Class Creation
+
+```php
+	include 'Emailage.class.php';
+	
+	$account_sid = 'My Account SID';
+	$authToken = 'My Auth Token';
+	$sandbox = TRUE; // Do I connect to the Sandbox or FALSE for the live system
+	$format = 'json'; // What format do I want returned ?  json or xml ?
+	$signature_method = 'sha1'; // What Encrption Method do I want to use ? Alowed types ('sha1', 'sha256', 'sha384', 'sha512')
+	$validate_response = TRUE; // Should the SDK Validate the response and throw an error if an error is found?
+	$return_parsed_result = TRUE; // Do I want my results returned to me already formatted. I.E. Already turned into Simple XML Object or JSON Object ?
+	
+	$Emailage = new Emailage($account_sid, $authToken, $sandbox, $format, $signature_method, $validate_response, $return_parsed_result);
+```
+
+Option 2, after Class Creation
+
+```php
+	include 'Emailage.class.php';
+	
+	$account_sid = 'My Account SID';
+	$authToken = 'My Auth Token';
+	
+	$Emailage = new Emailage($account_sid, $authToken);
+	$Emailage->changeSetting('format', 'json');
+	$Emailage->changeSetting('signature_method', 'sha256');
+	$Emailage->changeSetting('validate_response', FALSE);
+	$Emailage->changeSetting('return_parsed_results', FALSE);
 ```
