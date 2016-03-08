@@ -31,16 +31,16 @@
 	 * For Validating Email and/or IP Address, without providing a User Record ID.
 	 * 
 	 */
-		$results = $Emailage->validateEmail($testEmail);
-		//$results = $Emailage->validateIP($testIP);
-		//$results = $Emailage->validateBoth($testEmail, $testIP);
+		//$results = $Emailage->QueryEmail($testEmail);
+		//$results = $Emailage->QueryIpAddress($testIP);
+		//$results = $Emailage->QueryEmailAndIpAddress($testEmail, $testIP);
 	
 	/**
 	 * For Validating Email and/or IP Address, with a User Record ID
 	 */
-		//$results = $Emailage->validateEmail($testEmail, $myUserRecordID);
-		//$results = $Emailage->validateIP($testIP, $myUserRecordID);
-		//$results = $Emailage->validateBoth($testEmail, $testIP, $myUserRecordID);
+		//$results = $Emailage->QueryEmail($testEmail, $myUserRecordID);
+		//$results = $Emailage->QueryIpAddress($testIP, $myUserRecordID);
+		//$results = $Emailage->QueryEmailAndIpAddress($testEmail, $testIP, $myUserRecordID);
 		
 	/**
 	 * Flagging an Email Address.
@@ -54,9 +54,9 @@
 		9 Other
 	 */
 	
-		//$results = $Emailage->flagFraud($testEmail, 9);
-		//$results = $Emailage->flagNeutral($testEmail);
-		//$results = $Emailage->flagGood($testEmail);
+		//$results = $Emailage->FlagEmailAsFraud($testEmail, 9);
+		//$results = $Emailage->RemoveFlagFromEmail($testEmail);
+		//$results = $Emailage->FlagEmailAsGood($testEmail);
 	
 	print_r($results);
 	

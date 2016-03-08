@@ -142,7 +142,7 @@
 		 * @param INTEGER $fraudID
 		 * @return mixed
 		 */
-			public function flagFraud($email, $fraudID)
+			public function FlagEmailAsFraud($email, $fraudID)
 			{
 				return $this->executeQuery($email, FALSE, 'fraud', $fraudID);
 			}
@@ -152,7 +152,7 @@
 		 * @param STRING $email
 		 * @return mixed
 		 */
-			public function flagGood($email)
+			public function FlagEmailAsGood($email)
 			{
 				return $this->executeQuery($email, FALSE, 'good');
 			}
@@ -162,7 +162,7 @@
 		 * @param STRING $email
 		 * @return mixed
 		 */
-			public function flagNeutral($email)
+			public function RemoveFlagFromEmail($email)
 			{
 				return $this->executeQuery($email, FALSE, 'neutral');
 			}
@@ -173,7 +173,7 @@
 		 * @param STRING $recordID
 		 * @return mixed
 		 */
-			public function validateEmail($email, $recordID = NULL)
+			public function QueryEmail($email, $recordID = NULL)
 			{
 				return $this->executeQuery($email, $recordID);
 			}
@@ -184,7 +184,7 @@
 		 * @param STRING $recordID
 		 * @return mixed
 		 */
-			public function validateIP($ip, $recordID = NULL)
+			public function QueryIpAddress($ip, $recordID = NULL)
 			{
 				return $this->executeQuery($ip, $recordID);
 			}
@@ -196,7 +196,7 @@
 		 * @param string $recordID
 		 * @return mixed
 		 */
-			public function validateBoth($email, $ip, $recordID = NULL)
+			public function QueryEmailAndIpAddress($email, $ip, $recordID = NULL)
 			{
 				return $this->executeQuery($email . '+' . $ip, $recordID);
 			}
@@ -388,7 +388,6 @@
 						$error_message = curl_strerror($errno);
 						$this->handleError($errno, $error_message);
 					}
-				
 				return str_replace("\xEF\xBB\xBF", '', $results); //String Replace is clearing up some characters being sent from Emailage that json_decode doesn't like.
 			}
 		
