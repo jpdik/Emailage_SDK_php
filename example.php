@@ -1,7 +1,5 @@
 <?php
 	include 'Emailage.class.php';
-	$account_sid = 'F3E7912CAAFC4C748B1526829CB10AFE'; // Change me to your Account SID, found by logging into your account on Emailage Sandbox or Live API site.
-	$authToken = 'D60D88D704C44687A1803A0989B142DD'; // Change me to your Auth Token
 	//$account_sid = 'My Account SID'; // Change me to your Account SID, found by logging into your account on Emailage Sandbox or Live API site.
 	//$authToken = 'My Auth Token'; // Change me to your Auth Token
 	$testEmail = 'example@example.com'; // The email address you want this script to validate.
