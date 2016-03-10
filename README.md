@@ -2,7 +2,7 @@
 
 ![alt text][logo](https://www.emailage.com)
 
-The EmailageTM API is organized around REST (Representational State Transfer). The API was built to help companies integrate with our highly efficient fraud risk and scoring system. By calling our API endpoints and simply passing us an email and/or IP Address, companies will be provided with real-time risk scoring assessments based around machine learning and proprietary algorithms that evolve with new fraud trends.
+The Emailage&#8482; API is organized around REST (Representational State Transfer). The API was built to help companies integrate with our highly efficient fraud risk and scoring system. By calling our API endpoints and simply passing us an email and/or IP Address, companies will be provided with real-time risk scoring assessments based around machine learning and proprietary algorithms that evolve with new fraud trends.
 
 See our [Example script](example.php) for full code example.
 
@@ -55,28 +55,28 @@ Creating the Class
 ##### By Email Address
 
 ```php
-	$Emailage->validateEmail('example@example.com');
+	$Emailage->QueryEmail('example@example.com');
 ```
 
 #####By IP
 
 ```php
-	$Emailage->validateIP('127.0.0.1');
+	$Emailage->QueryIpAddress('127.0.0.1');
 ```
 
 #####By Both Email and IP
 
 ```php
-	$Emailage->validateBoth('example@example.com', '127.0.0.1');
+	$Emailage->QueryEmailAndIpAddress('example@example.com', '127.0.0.1');
 ```
 
 ###Adding a User Defined Record ID. 
 ######This parameter can be used when you want to add an identifier for a query. The identifier will display in the result.
 
 ```php
-	$Emailage->validateEmail('example@example.com', 1234);
-	$Emailage->validateIP('127.0.0.1', 1235);
-	$Emailage->validateBoth('example@example.com', '127.0.0.1', 1236);
+	$Emailage->QueryEmail('example@example.com', 1234);
+	$Emailage->QueryIpAddress('127.0.0.1', 1235);
+	$Emailage->QueryEmailAndIpAddress('example@example.com', '127.0.0.1', 1236);
 ```
 
 ###Flagging an Email Address
@@ -90,23 +90,26 @@ Creating the Class
 		2 Customer Dispute (Chargeback)
 		3 First Party Fraud
 		4 First Payment Default
-		5 Identify Theft (Fraud Application) 6 Identify Theft (Account Take Over) 7 Suspected Fraud (Not Confirmed) 8 Synthetic ID
+		5 Identify Theft (Fraud Application) 
+		6 Identify Theft (Account Take Over) 
+		7 Suspected Fraud (Not Confirmed) 
+		8 Synthetic ID
 		9 Other
 	*/
 	$fraudID = 9;
-	$Emailage->flagFraud('example@example.com', $fraudID);
+	$Emailage->FlagEmailAsFraud('example@example.com', $fraudID);
 ```
 
 #####As Neutral
 
 ```php
-	$Emailage->flagNeutral('example@example.com');
+	$Emailage->RemoveFlagFromEmail('example@example.com');
 ```
 
 #####As Good
 
 ```php
-	$Emailage->flagGood('example@example.com');
+	$Emailage->FlagEmailAsGood('example@example.com');
 ```
 
 ###Errors
