@@ -12,7 +12,7 @@
 	 */
 		$sandbox = TRUE; // Do I connect to the Sandbox or FALSE for the live system
 		$format = 'json'; // What format do I want returned ?  json or xml ?
-		$signature_method = 'sha1'; // What Encrption Method do I want to use ? Alowed types ('sha1', 'sha256', 'sha384', 'sha512')
+		$signature_method = 'sha1'; // What Encrption Method do I want to use ? Allowed types ('sha1', 'sha256', 'sha384', 'sha512')
 		$validate_response = TRUE; // Should the SDK Validate the response and throw an error if an error is found?
 		$return_parsed_result = TRUE; // Do I want my results returned to me already formatted. I.E. Already turned into Simple XML Object or JSON Object ?
 		
@@ -71,13 +71,12 @@
 		//$params['useragent'] = 'Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0';
 		//$params['acceptlang'] = 'EN';
 		//$params['urid'] = '1234';
-
 	/**
 	 * To use this Script, just un-comment one line at a time by removing the //
 	 */
 	
 	/**
-	 * For Validating Email and/or IP Address, without providing a User Record ID.
+	 * For Validating Email and/or IP Address, without providing an optional parameter list
 	 * 
 	 */
 		//$results = $Emailage->QueryEmail($testEmail);
@@ -85,7 +84,7 @@
 		//$results = $Emailage->QueryEmailAndIpAddress($testEmail, $testIP);
 	
 	/**
-	 * For Validating Email and/or IP Address, with Additional Parameters
+	 * For Validating Email and/or IP Address, with optional parameters
 	 */
 		//$results = $Emailage->QueryEmail($testEmail, $params);
 		//$results = $Emailage->QueryIpAddress($testIP, $params);
@@ -99,7 +98,10 @@
 		2 Customer Dispute (Chargeback)
 		3 First Party Fraud
 		4 First Payment Default
-		5 Identify Theft (Fraud Application) 6 Identify Theft (Account Take Over) 7 Suspected Fraud (Not Confirmed) 8 Synthetic ID
+		5 Identify Theft (Fraud Application) 
+		6 Identify Theft (Account Take Over) 
+		7 Suspected Fraud (Not Confirmed) 
+		8 Synthetic ID
 		9 Other
 	 */
 	
