@@ -112,6 +112,17 @@
 		 * @var STRING
 		 */
 			private $request_type = 'GET';
+			
+		
+		/**
+		 * The Additional Parameters that the user can provide to the Query Calls
+		 * @var unknown
+		 */
+			private $allowed_parameters = Array
+			(
+				'firstname', 'lastname', 'billcity', 'billregion', 'billpostal', 'billcountry', 'shipaddress', 'shipcity', 'shipregion', 'shippostal',
+				'shipcountry', 'phone', 'transamount', 'transcurrency', 'user_email', 'transorigin', 'existingcustomer', 'useragent', 'acceptlang', 'urid'
+			);
 		
 			
 		/**
@@ -144,7 +155,7 @@
 		 */
 			public function FlagEmailAsFraud($email, $fraudID)
 			{
-				return $this->executeQuery($email, FALSE, 'fraud', $fraudID);
+				return $this->executeQuery($email, NULL, 'fraud', $fraudID);
 			}
 		
 		/**
@@ -154,7 +165,7 @@
 		 */
 			public function FlagEmailAsGood($email)
 			{
-				return $this->executeQuery($email, FALSE, 'good');
+				return $this->executeQuery($email, NULL, 'good');
 			}
 			
 		/**
@@ -164,7 +175,7 @@
 		 */
 			public function RemoveFlagFromEmail($email)
 			{
-				return $this->executeQuery($email, FALSE, 'neutral');
+				return $this->executeQuery($email, NULL, 'neutral');
 			}
 		
 		/**
@@ -173,9 +184,10 @@
 		 * @param STRING $recordID
 		 * @return mixed
 		 */
-			public function QueryEmail($email, $recordID = NULL)
+			public function QueryEmail($email, Array $parameters = Array())
 			{
-				return $this->executeQuery($email, $recordID);
+				$acceptedParameters = $this->validateParametersArray($parameters);
+				return $this->executeQuery($email, $acceptedParameters);
 			}
 		
 		/**
@@ -184,9 +196,10 @@
 		 * @param STRING $recordID
 		 * @return mixed
 		 */
-			public function QueryIpAddress($ip, $recordID = NULL)
+			public function QueryIpAddress($ip, Array $parameters = Array())
 			{
-				return $this->executeQuery($ip, $recordID);
+				$acceptedParameters = $this->validateParametersArray($parameters);
+				return $this->executeQuery($ip, $acceptedParameters);
 			}
 		
 		/**
@@ -196,11 +209,37 @@
 		 * @param string $recordID
 		 * @return mixed
 		 */
-			public function QueryEmailAndIpAddress($email, $ip, $recordID = NULL)
+			public function QueryEmailAndIpAddress($email, $ip, Array $parameters = Array())
 			{
-				return $this->executeQuery($email . '+' . $ip, $recordID);
+				$acceptedParameters = $this->validateParametersArray($parameters);
+				return $this->executeQuery($email . '+' . $ip, $acceptedParameters);
 			}
 		
+		/**
+		 * Validates all the Parameters the users has provided.
+		 * 
+		 * If they are not valid Parameters it throws an error.
+		 * @param unknown $parameters
+		 */
+			private function validateParametersArray($parameters)
+			{
+				$validParameters = Array();
+				
+				foreach($parameters AS $paramName => $param)
+				{
+					$paramName = strtolower($paramName);
+					if(in_array($paramName, $this->allowed_parameters))
+					{
+						$validParameters[$paramName] = $param;
+					}
+					else 
+					{
+						$this->handleError('9000', "Invalid Paramater Provided: ($paramName)");
+					}
+				}
+				return $validParameters;
+			}
+			
 		/**
 		 * Creates the Parameters Array for Curl to Execute the Query
 		 * @param string $query
@@ -209,7 +248,7 @@
 		 * @param string $fraudID
 		 * @return SimpleXMLElement|unknown
 		 */
-			private function executeQuery($query, $recordID = NULL, $flag = NULL, $fraudID = NULL)
+			private function executeQuery($query, $additionalParameters = NULL, $flag = NULL, $fraudID = NULL)
 			{
 				/**
 				 * Do we need to Add or Remove the Flag from the Full URL ??
@@ -248,10 +287,17 @@
 				 * but they will only get parsed through if their value is NOT NULL
 				 */
 					$parameters['query'] = $query;
-					$parameters['urid'] = $recordID;
 					$parameters['flag'] = $flag;
 					$parameters['fraudcodeID'] = $fraudID;
 				
+				/**
+				 * Lets Add in our Additional Parameters
+				 */
+					if(!is_null($additionalParameters))
+					{
+						$parameters = array_merge($parameters, $additionalParameters);
+					}
+					
 				// Have Curl Execute the Call and Return the Results
 				$results = $this->execute($URL, $parameters);
 				
@@ -374,7 +420,7 @@
 			{
 				// Attach our Query Parameters to the URL
 				$URL .= '?' . http_build_query($parameters);
-						
+				
 				$CH = curl_init($URL); // Initialize Curl
 					
 				curl_setopt($CH, CURLOPT_RETURNTRANSFER, 1); // Force Curl to return the response

@@ -1,10 +1,11 @@
 <?php
 	include 'Emailage.class.php';
-	$account_sid = 'My Account SID'; // Change me to your Account SID, found by logging into your account on Emailage Sandbox or Live API site.
-	$authToken = 'My Auth Token'; // Change me to your Auth Token
+	$account_sid = 'F3E7912CAAFC4C748B1526829CB10AFE'; // Change me to your Account SID, found by logging into your account on Emailage Sandbox or Live API site.
+	$authToken = 'D60D88D704C44687A1803A0989B142DD'; // Change me to your Auth Token
+	//$account_sid = 'My Account SID'; // Change me to your Account SID, found by logging into your account on Emailage Sandbox or Live API site.
+	//$authToken = 'My Auth Token'; // Change me to your Auth Token
 	$testEmail = 'example@example.com'; // The email address you want this script to validate.
 	$testIP = '127.0.0.1'; // The IP address you want this script to validate.
-	$myUserRecordID = '12345'; // The ID of the Record you want this script to use when Validating the Record.  Remember, this is your ID for the user.
 	
 	$Emailage = new Emailage($account_sid, $authToken);
 	
@@ -22,6 +23,56 @@
 		$Emailage->changeSetting('signature_method', $signature_method);
 		$Emailage->changeSetting('validate_response', $validate_response);
 		$Emailage->changeSetting('return_parsed_result', $return_parsed_result);
+		
+	/**
+	 * Dealing with Additional Parameters to the Query Call.
+	 * 
+	 * QueryEmail, QueryIPAddress and QueryEmailAndIpAddress all take an additional array of parameter settings for you to give more details on.
+	 * 
+	 * firstname 
+	 * lastname
+	 * billcity
+	 * billregion
+	 * billpostal
+	 * billcountry
+	 * shipaddress
+	 * shipcity
+	 * shipregion
+	 * shippostal
+	 * shipcountry
+	 * phone
+	 * transamount
+	 * transcurrency
+	 * user_email -- This needs to be an Email that is associated to a department you setup in Emailage.
+	 * transorigin
+	 * existingcustomer
+	 * useragent
+	 * acceptlang
+	 * urid -- ID that designates the user associated to the email address in your system.
+	 * 
+	 * Uncomment and modify the parameters to test them out.
+	 */
+		$params = Array();
+		//$params['firstname'] = 'Sam';
+		//$params['lastname'] = 'Smith';
+		//$params['billcity'] = 'somewhere';
+		//$params['billregion'] = 'region';
+		//$params['billpostal'] = '44444';
+		//$params['billcountry'] = 'US';
+		//$params['shipaddress'] = '111 no where lane';
+		//$params['shipcity'] = 'somewhere';
+		//$params['shipregion'] = 'region';
+		//$params['shippostal'] = '44444';
+		//$params['shipcountry'] = 'US';
+		//$params['phone'] = '9995551212';
+		//$params['transamount'] = '100.92';
+		//$params['transcurrency'] = 'US';
+		//$params['user_email'] = '';
+		//$params['transorigin'] = 'somewhere';
+		//$params['existingcustomer'] = 'NO';
+		//$params['useragent'] = 'Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0';
+		//$params['acceptlang'] = 'EN';
+		//$params['urid'] = '1234';
 
 	/**
 	 * To use this Script, just un-comment one line at a time by removing the //
@@ -36,11 +87,11 @@
 		//$results = $Emailage->QueryEmailAndIpAddress($testEmail, $testIP);
 	
 	/**
-	 * For Validating Email and/or IP Address, with a User Record ID
+	 * For Validating Email and/or IP Address, with Additional Parameters
 	 */
-		//$results = $Emailage->QueryEmail($testEmail, $myUserRecordID);
-		//$results = $Emailage->QueryIpAddress($testIP, $myUserRecordID);
-		//$results = $Emailage->QueryEmailAndIpAddress($testEmail, $testIP, $myUserRecordID);
+		//$results = $Emailage->QueryEmail($testEmail, $params);
+		//$results = $Emailage->QueryIpAddress($testIP, $params);
+		//$results = $Emailage->QueryEmailAndIpAddress($testEmail, $testIP, $params);
 		
 	/**
 	 * Flagging an Email Address.
