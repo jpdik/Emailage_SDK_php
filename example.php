@@ -23,30 +23,9 @@
 		$Emailage->changeSetting('return_parsed_result', $return_parsed_result);
 		
 	/**
-	 * Dealing with Additional Parameters to the Query Call.
-	 * 
+	 * Dealing with Additional Parameters to the Query Call.  
+	 * Document here - https://app.emailage.com/document/api
 	 * QueryEmail, QueryIPAddress and QueryEmailAndIpAddress all take an additional array of parameter settings for you to give more details on.
-	 * 
-	 * firstname 
-	 * lastname
-	 * billcity
-	 * billregion
-	 * billpostal
-	 * billcountry
-	 * shipaddress
-	 * shipcity
-	 * shipregion
-	 * shippostal
-	 * shipcountry
-	 * phone
-	 * transamount
-	 * transcurrency
-	 * user_email -- This needs to be an Email that is associated to a department you setup in Emailage.
-	 * transorigin
-	 * existingcustomer
-	 * useragent
-	 * acceptlang
-	 * urid -- ID that designates the user associated to the email address in your system.
 	 * 
 	 * Uncomment and modify the parameters to test them out.
 	 */
@@ -65,12 +44,27 @@
 		//$params['phone'] = '9995551212';
 		//$params['transamount'] = '100.92';
 		//$params['transcurrency'] = 'US';
-		//$params['user_email'] = '';
+		//$params['user_email'] = '';  //This needs to be an Email that is associated to a department you setup in Emailage.
 		//$params['transorigin'] = 'somewhere';
 		//$params['existingcustomer'] = 'NO';
 		//$params['useragent'] = 'Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0';
 		//$params['acceptlang'] = 'EN';
-		//$params['urid'] = '1234';
+		//$params['response_language'] = 'EN';
+		//$params['urid'] = '1234'; // ID that designates the user associated to the email address in your system.
+		//$params['customerid'] = '';
+		//$params['deviceId'] = '';
+		//$params['deviceSource'] = '';
+		//$params['time_to_service'] = '';
+		//$params['service_date'] = '';
+		//$params['secondary_email'] = '';
+		//$params['service_location'] = '';
+		//$params['service_detail'] = '';
+		//$params['service_category'] = '';
+		//$params['delivery_type'] = '';
+		//$params['cardFirstSix'] = '123456';
+		//$params['hashedCardNumber'] = '';
+		//$params['custom1'] = '';
+		//$params['custom2'] = '';
 	/**
 	 * To use this Script, just un-comment one line at a time by removing the //
 	 */
@@ -111,4 +105,3 @@
 	
 	print_r($results);
 	
-?>

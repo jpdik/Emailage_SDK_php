@@ -1,11 +1,9 @@
 <?php
-
 	/**
 	 * Create for Emailage to provide SDK access to their API through PHP
 	 * @author jpitcher
 	 *
 	 */
-
 	class Emailage
 	{
 		/**
@@ -106,7 +104,6 @@
 		 * @var BOOLEAN
 		 */
 			private $setting_return_parsed_result = TRUE;
-
 		/**
 		 * The Request Type of the API Call.  Currently locked at GET.
 		 * @var STRING
@@ -120,8 +117,42 @@
 		 */
 			private $allowed_parameters = Array
 			(
-				'firstname', 'lastname', 'billcity', 'billregion', 'billpostal', 'billcountry', 'shipaddress', 'shipcity', 'shipregion', 'shippostal',
-				'shipcountry', 'phone', 'transamount', 'transcurrency', 'user_email', 'transorigin', 'existingcustomer', 'useragent', 'acceptlang', 'urid'
+				'firstname',
+				'lastname',
+				'billaddress',
+				'billcity',
+				'billregion',
+				'billpostal',
+				'billcountry',
+				'shipaddress',
+				'shipcity',
+				'shipregion',
+				'shippostal',
+				'shipcountry',
+				'phone',
+				'transamount',
+				'transcurrency',
+				'user_email',
+				'transorigin',
+				'existingcustomer',
+				'useragent',
+				'acceptlang',
+				'response_language',
+				'urid',
+				'customerid',
+				'deviceId',
+				'deviceSource',
+				'time_to_service',
+				'service_date',
+				'secondary_email',
+				'service_location',
+				'service_detail',
+				'service_category',
+				'delivery_type',
+				'cardFirstSix',
+				'hashedCardNumber',
+				'custom1',
+				'custom2'
 			);
 		
 			
@@ -566,4 +597,3 @@
 			}
 	}
 
-?>
