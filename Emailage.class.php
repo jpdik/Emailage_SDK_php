@@ -140,7 +140,7 @@
 				'response_language',
 				'urid',
 				'customerid',
-				'deviceId',
+				'deviceid',
 				'deviceSource',
 				'time_to_service',
 				'service_date',

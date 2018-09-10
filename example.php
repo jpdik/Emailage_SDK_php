@@ -52,7 +52,7 @@
 		//$params['response_language'] = 'EN';
 		//$params['urid'] = '1234'; // ID that designates the user associated to the email address in your system.
 		//$params['customerid'] = '';
-		//$params['deviceId'] = '';
+		//$params['deviceid'] = '';
 		//$params['deviceSource'] = '';
 		//$params['time_to_service'] = '';
 		//$params['service_date'] = '';
