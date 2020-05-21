@@ -141,7 +141,7 @@
 				'urid',
 				'customerid',
 				'deviceid',
-				'deviceSource',
+				'devicesource',
 				'time_to_service',
 				'service_date',
 				'secondary_email',
